@@ -5,6 +5,7 @@ import { MailList } from '../cmps/MailList.jsx'
 // import { MailFilter } from '../cmps/MailFilter.jsx'
 // import { Compose } from '../cmps/Compose.jsx'
 import { MailCompose } from '../cmps/MailCompose.jsx'
+import { func } from 'prop-types'
 
 const { NavLink, Route } = ReactRouterDOM
 
@@ -51,9 +52,10 @@ export class MailApp extends React.Component {
         this.setState({ filterBy }, this.loadMails)
     }
 
-    onCompose = () => {
-        mailService.composeMail()
-    }
+    // onCompose = () => {
+    //     mailService.composeMail()
+    // }
+   
 
     render() {
         const { mails } = this.state
@@ -80,9 +82,13 @@ function Compose() {
             <label htmlFor="email">To: <input type="email" name="email" id="email" /></label>           
             <label htmlFor="subject">Subject: <input type="text" name="subject" id="subject" /></label>
             <textarea name="body" id="body" cols="30" rows="10"></textarea>
-            <button>send</button>
+            <button onClick={goToMail()}>send</button>
             <h3>link to notes</h3>
         </form>
     </section>
 
+}
+
+function goToMail(){
+    
 }
