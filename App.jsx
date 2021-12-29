@@ -1,9 +1,9 @@
 
 import { AppHome } from './js/pages/app-home.jsx';
 import { AppHeader } from './js/cmps/AppHeader.jsx';
+import { NoteApp } from './js/apps/keep/pages/note-index.jsx';
 // import { AppFooter } from './js/cmps/AppFooter.jsx';
 // import { MailApp } from 'apps/mail/pages/mail-index.jsx';
-// import { KeepApp } from 'apps/keep/pages/note-index.jsx';
 // import { BookApp } from 'apps/book/pages/book-index.jsx';
 
 const Router = ReactRouterDOM.HashRouter;
@@ -18,8 +18,8 @@ export function App(){
         <main className="app-main">
             <Switch>
                 <Route component={AppHome} path="/"/>
+                <Route component={NoteApp} path="/keep"/>
                 {/* <Route component={MailApp} path="/mail"/>
-                <Route component={KeepApp} path="/keep"/>
                 <Route component={BookApp} path="/book"/> */}
             </Switch>
         </main>
