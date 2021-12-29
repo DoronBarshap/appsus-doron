@@ -1,1 +1,6 @@
-console.log("yoooo22222333333")
+// import { App } from './App.jsx'
+
+// ReactDOM.render(
+//     <App />,
+//     document.getElementById('root')
+// )
