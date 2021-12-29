@@ -154,22 +154,25 @@ const mails = [
         body: 'Would love to catch up sometimes',
         isRead: false,
         sentAt: 1551133930594,
-        to: 'momo@momo.com'
+        to: 'momo@momo.com',
+        from: 'aibi@natan.com'
     },
     {
         id: 'e102',
-        subject: 'Miss you!',
+        subject: 'you Miss !',
         body: 'Would love to catch sideways sometimes',
         isRead: true,
         sentAt: 1551133930595,
-        to: 'momo@momo.com'
+        to: 'momo@momo.com',
+        from: 'artishok@yerushalmi.com'
     },
     {
         id: 'e103',
-        subject: 'Miss you!',
+        subject: 'Miss Pigi!',
         body: 'Would love to catch down sometimes',
         isRead: false,
         sentAt: 1551133930596,
-        to: 'momo@momo.com'
+        to: 'bill@kill.ocm',
+        from: 'momo@momo.com'
     }
 ]

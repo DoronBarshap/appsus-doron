@@ -2,8 +2,8 @@
 // import { mailService} from "../services/mail.service.js"
 // import { eventBusService } from "../services/event-bus.service.js";
 
-//edits already existing mail or writes a new one
-export class MailEdit extends React.Component {
+
+export class MailCompose extends React.Component {
 
     state = {
         mail: {
@@ -64,7 +64,7 @@ export class MailEdit extends React.Component {
                 </form> */}
 
 
-                <h1>edit /or/ compose new mail (hidden)</h1>
+                <h1>compose new mail (hidden)</h1>
             </section>
         )
     }

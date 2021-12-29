@@ -3,9 +3,10 @@ import { mailService } from '../services/mail.service.js'
 import { Loader } from '../cmps/Loader.jsx'
 import { MailList } from '../cmps/MailList.jsx'
 // import { MailFilter } from '../cmps/MailFilter.jsx'
-import { Compose } from '../cmps/Compose.jsx'
-import { MailEdit } from '../cmps/MailEdit.jsx'
-// const { Link } = ReactRouterDOM
+// import { Compose } from '../cmps/Compose.jsx'
+import { MailCompose } from '../cmps/MailCompose.jsx'
+
+const { NavLink, Route } = ReactRouterDOM
 
 export class MailApp extends React.Component {
 
@@ -60,8 +61,10 @@ export class MailApp extends React.Component {
         if (!mails) return <Loader />
         return (
             <section className="mail-app">
-                <h1>Mail App:</h1><button onClick={this.onCompose}>Compose</button>
-               <MailEdit />
+                {/* <h1>Mail App:</h1><button onClick={this.onCompose}>Compose</button> */}
+                <NavLink activeClassName="my-active" to="/mail/compose"><button>Compose</button></NavLink>
+                <Route component={Compose} path="/mail/compose" />
+                {/* <MailCompose /> */}
                 {/* <MailFilter onSetFilter={this.onSetFilter} /> */}
                 {/* <Link className="primary-btn clean-link" to="/mail/edit">Add mail</Link> */}
                 {/* <Compose /> */}
@@ -69,4 +72,17 @@ export class MailApp extends React.Component {
             </section>
         )
     }
+}
+
+function Compose() {
+    return <section>
+        <form>
+            <label htmlFor="email">To: <input type="email" name="email" id="email" /></label>           
+            <label htmlFor="subject">Subject: <input type="text" name="subject" id="subject" /></label>
+            <textarea name="body" id="body" cols="30" rows="10"></textarea>
+            <button>send</button>
+            <h3>link to notes</h3>
+        </form>
+    </section>
+
 }
