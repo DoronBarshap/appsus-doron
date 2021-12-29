@@ -1,6 +1,6 @@
 import { noteService } from "../services/note.service.js";
 import { NoteList } from "../cmps/note-list.jsx";
-
+console.log('i')
 const { Link } = ReactRouterDOM;
 
 export class NoteApp extends React.Component {
@@ -13,17 +13,22 @@ export class NoteApp extends React.Component {
     }
     
     loadNotes = () => {
-        this.setState({notes});
-        console.log(notes)
+        const { filterBy } = this.state;
+        noteService.query(filterBy)
+        .then((notes) => {
+            this.setState({notes})
+        })
+
 
     }
     
     render() {
         const {notes} = this.state;
-        if(!notes) return;
+        if(!notes) return <h1>notes not found</h1>
         return (
             <section className="note-container">
-                <NoteList notes = {this.notesToDisplay}/>
+                <h1>hi</h1>
+                <NoteList notes = {notes}/>
             </section>
         )
     }

@@ -2,12 +2,20 @@ import {utilService} from '../../../services/util.service.js';
 import {storageService} from '../../../services/storage.service.js';
 
 export const noteService = {
-    _createNotes
+    query
 }
 
 const NOTES_KEY = 'notesDB';
 let gNotes;
 
+
+
+function query(filterBy = null){
+    const notes = _loadNotesFromStorage();
+    if(!filterBy) return Promise.resolve(notes);
+    // else const notesToDisplay = _getFilteredNotes(notes, filterBy);
+    // return Promise.resolve(notesToDisplay);
+}
 
 _createNotes()
 function _createNotes()  {
