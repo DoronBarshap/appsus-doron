@@ -9,7 +9,8 @@ export const mailService = {
     saveMail,
     getMailById,
     getNextMailId,
-    getNumOfUnReadMails
+    getNumOfUnReadMails,
+    composeMail
 }
 
 const KEY = 'mailDB';
@@ -94,7 +95,8 @@ function getMailById(mailId) {
     return Promise.resolve(mail)
 }
 
-function _createMail(){
+function composeMail() {
+    console.log('composeMail was activated')
     
 }
 
@@ -109,11 +111,11 @@ function _createMail(){
 //     }
 // }
 
-function getNumOfUnReadMails(mails){
+function getNumOfUnReadMails(mails) {
     let counter = 0
-    mails.forEach(mail=> {
+    mails.forEach(mail => {
         if (!mail.isRead) counter++
-    } )
+    })
     return counter
 
 }
@@ -143,7 +145,7 @@ function _loadMailsFromStorage() {
 const loggedinUser = {
     email: 'user@appsus.com',
     fullname: 'Mahatma Appsus'
-    }
+}
 
 const mails = [
     {

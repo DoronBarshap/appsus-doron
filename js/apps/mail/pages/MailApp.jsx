@@ -3,7 +3,8 @@ import { mailService } from '../services/mail.service.js'
 import { Loader } from '../cmps/Loader.jsx'
 import { MailList } from '../cmps/MailList.jsx'
 // import { MailFilter } from '../cmps/MailFilter.jsx'
-
+import { Compose } from '../cmps/Compose.jsx'
+import { MailEdit } from '../cmps/MailEdit.jsx'
 // const { Link } = ReactRouterDOM
 
 export class MailApp extends React.Component {
@@ -11,11 +12,11 @@ export class MailApp extends React.Component {
     state = {
         mails: null,
         filterBy: null,
+
     }
 
     componentDidMount() {
         this.loadMails()
-        console.log('component did mount')
     }
 
     get ctgSearchParam() {
@@ -49,17 +50,21 @@ export class MailApp extends React.Component {
         this.setState({ filterBy }, this.loadMails)
     }
 
+    onCompose = () => {
+        mailService.composeMail()
+    }
+
     render() {
-        console.log('i am in mail app')
         const { mails } = this.state
-        
+
         if (!mails) return <Loader />
         return (
             <section className="mail-app">
-                <h1>Mail App:</h1>
+                <h1>Mail App:</h1><button onClick={this.onCompose}>Compose</button>
+               <MailEdit />
                 {/* <MailFilter onSetFilter={this.onSetFilter} /> */}
                 {/* <Link className="primary-btn clean-link" to="/mail/edit">Add mail</Link> */}
-                
+                {/* <Compose /> */}
                 <MailList mails={this.mailsToDisplay} />
             </section>
         )
