@@ -9,7 +9,8 @@ export const mailService = {
     saveMail,
     getMailById,
     getNextMailId,
-    getNumOfUnReadMails
+    getNumOfUnReadMails,
+    composeMail
 }
 
 const KEY = 'mailDB';
@@ -94,7 +95,8 @@ function getMailById(mailId) {
     return Promise.resolve(mail)
 }
 
-function _createMail(){
+function composeMail() {
+    console.log('composeMail was activated')
     
 }
 
@@ -109,11 +111,11 @@ function _createMail(){
 //     }
 // }
 
-function getNumOfUnReadMails(mails){
+function getNumOfUnReadMails(mails) {
     let counter = 0
-    mails.forEach(mail=> {
+    mails.forEach(mail => {
         if (!mail.isRead) counter++
-    } )
+    })
     return counter
 
 }
@@ -143,7 +145,7 @@ function _loadMailsFromStorage() {
 const loggedinUser = {
     email: 'user@appsus.com',
     fullname: 'Mahatma Appsus'
-    }
+}
 
 const mails = [
     {
@@ -152,22 +154,25 @@ const mails = [
         body: 'Would love to catch up sometimes',
         isRead: false,
         sentAt: 1551133930594,
-        to: 'momo@momo.com'
+        to: 'momo@momo.com',
+        from: 'aibi@natan.com'
     },
     {
         id: 'e102',
-        subject: 'Miss you!',
+        subject: 'you Miss !',
         body: 'Would love to catch sideways sometimes',
         isRead: true,
         sentAt: 1551133930595,
-        to: 'momo@momo.com'
+        to: 'momo@momo.com',
+        from: 'artishok@yerushalmi.com'
     },
     {
         id: 'e103',
-        subject: 'Miss you!',
+        subject: 'Miss Pigi!',
         body: 'Would love to catch down sometimes',
         isRead: false,
         sentAt: 1551133930596,
-        to: 'momo@momo.com'
+        to: 'bill@kill.ocm',
+        from: 'momo@momo.com'
     }
 ]
