@@ -1,11 +1,25 @@
-.app-header {
+
+.app-header{
+    margin: 15px 0 20px;
+}
+
+
+.header-container {
     height: 70px;
     background-color: lightgrey;
     margin: auto;
-  }
+    
+}
+
+.logo{
+    padding:30px;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
 
 .app-nav{
-    background-color: lightpink;
     list-style-type: none;
     width: 50%;
     font-size: 1.05em;
@@ -14,5 +28,15 @@
 }
 
 .app-nav > *:not(:last-child) {
-    margin-inline-end: 40px;
+    margin-inline-end: 50px;
+}
+
+.nav-btn{
+    background-color: whitesmoke;
+    color: rgb(29, 26, 26);
+    padding: 5px 13px;
+    border-radius: 2em;
+    transition: 0.5s;
+    outline: none;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.137);
 }

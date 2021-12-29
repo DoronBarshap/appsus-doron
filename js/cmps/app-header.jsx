@@ -5,16 +5,16 @@ const {NavLink, withRouter} = ReactRouterDOM;
 class _AppHeader extends React.Component {
     render(){
     return (
-        <section className="app-header flex space-between align-center">
-            <div className="header-container flex align-center">
+        <div className="header-container flex space-between align-center">
+            <div className="logo flex align-center">
                 <h1 onClick={() => this.props.history.push('/')}>AppSus</h1>
-            <nav className="app-nav flex align-center">
+            </div>
+            <nav className="app-nav flex justify-center">
                 <NavLink className="nav-btn" to="/mail">Email</NavLink>
                 <NavLink className="nav-btn" to="/keep">Notes</NavLink>
                 <NavLink className="nav-btn" to="/book">Books</NavLink>
             </nav>
-            </div>
-        </section>
+        </div>
     );
     }
 }

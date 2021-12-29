@@ -1,6 +1,6 @@
 
 import { AppHome } from './js/pages/app-home.jsx';
-import { AppHeader } from './js/cmps/AppHeader.jsx';
+import { AppHeader } from './js/cmps/app-header.jsx';
 import { NoteApp } from './js/apps/keep/pages/note-index.jsx';
 // import { AppFooter } from './js/cmps/AppFooter.jsx';
 import { MailApp } from './js/apps/mail/pages/MailApp.jsx'
@@ -12,7 +12,7 @@ const { Route, Switch } = ReactRouterDOM;
 export function App(){
     return(
     <Router>
-        <header>
+        <header className="app-header">
             <AppHeader/>
         </header>
         <main className="app-main">
