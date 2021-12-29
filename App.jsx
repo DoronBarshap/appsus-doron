@@ -3,7 +3,7 @@ import { AppHome } from './js/pages/app-home.jsx';
 import { AppHeader } from './js/cmps/AppHeader.jsx';
 import { NoteApp } from './js/apps/keep/pages/note-index.jsx';
 // import { AppFooter } from './js/cmps/AppFooter.jsx';
-// import { MailApp } from 'apps/mail/pages/mail-index.jsx';
+import { MailApp } from './js/apps/mail/pages/MailApp.jsx'
 // import { BookApp } from 'apps/book/pages/book-index.jsx';
 
 const Router = ReactRouterDOM.HashRouter;
@@ -17,10 +17,10 @@ export function App(){
         </header>
         <main className="app-main">
             <Switch>
-                <Route component={AppHome} path="/"/>
+                <Route component={MailApp} path="/mail"/>
                 <Route component={NoteApp} path="/keep"/>
-                {/* <Route component={MailApp} path="/mail"/>
-                <Route component={BookApp} path="/book"/> */}
+                <Route component={AppHome} path="/"/>
+                {/* <Route component={BookApp} path="/book"/> */}
             </Switch>
         </main>
         <footer>
