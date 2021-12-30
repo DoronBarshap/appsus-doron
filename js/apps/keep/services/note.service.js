@@ -3,7 +3,8 @@ import { storageService } from "../../../services/storage.service.js";
 
 export const noteService = {
   query,
-  createNote
+  createNote,
+  removeNote
 };
 
 const NOTES_KEY = "notesDB";
@@ -24,6 +25,14 @@ function addNote(noteToAdd) {
     gNotes.unshift(noteToAdd);
     _saveNotesToStorage(gNotes);
     return Promise.resolve(noteToAdd);
+}
+
+function removeNote(noteId){
+    let noteIdx = gNotes.findIndex((note) => note.id === noteId);
+    gNotes.splice(noteIdx, 1);
+    _saveNotesToStorage(gNotes);
+    console.log(gNotes)
+    return Promise.resolve(gNotes);
 }
 
 function changeVideoLinkEmbed(linkStr) {

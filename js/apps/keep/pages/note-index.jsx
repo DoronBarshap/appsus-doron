@@ -18,6 +18,12 @@ export class NoteApp extends React.Component {
             this.setState({ notes });
           })
     }
+
+    onRemoveNote = () => {
+        console.log('hi')
+        noteService.removeNote(this.state.notes.id)
+        .then(this.loadNotes);
+    }
     
     render() {
         const {notes} = this.state;
@@ -26,7 +32,10 @@ export class NoteApp extends React.Component {
             <section className="note-container">
                 <h1>My notes</h1>
                 <AddNote loadNotes={this.loadNotes}/>
-                <NoteList notes = {notes}/>
+                <NoteList 
+                notes = {notes}
+                onRemoveNote={this.onRemoveNote}/>
+                
             </section>
         )
     }
