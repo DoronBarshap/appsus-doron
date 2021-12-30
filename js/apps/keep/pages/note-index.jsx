@@ -19,11 +19,15 @@ export class NoteApp extends React.Component {
           })
     }
 
-    onRemoveNote = () => {
-        console.log('hi')
-        noteService.removeNote(this.state.notes.id)
-        .then(this.loadNotes);
+    onRemoveNote = (note) => {
+        noteService.removeNote(note.id).then(this.loadNotes())
     }
+
+    // onRemoveNote = () => {
+    //     console.log('hi')
+    //     noteService.removeNote(this.state.notes.id)
+    //     .then(this.loadNotes);
+    // }
     
     render() {
         const {notes} = this.state;

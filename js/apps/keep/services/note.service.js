@@ -8,31 +8,29 @@ export const noteService = {
 };
 
 const NOTES_KEY = "notesDB";
-var gNotes;
 
 _createNotes();
 
 function query(filterBy = null) {
-  const gNotes = _loadNotesFromStorage();
-  if (!filterBy) return Promise.resolve(gNotes);
+  const notes = _loadNotesFromStorage();
+  if (!filterBy) return Promise.resolve(notes);
   // else const notesToDisplay = _getFilteredNotes(notes, filterBy);
-  // return Promise.resolve(notesToDisplay);
+//   return Promise.resolve(notesToDisplay);
 }
 
 function addNote(noteToAdd) {
-    // let notes = _loadNotesFromStorage();
+    let notes = _loadNotesFromStorage();
     console.log(noteToAdd)
-    gNotes.unshift(noteToAdd);
-    _saveNotesToStorage(gNotes);
+    notes.unshift(noteToAdd);
+    _saveNotesToStorage(notes);
     return Promise.resolve(noteToAdd);
 }
 
 function removeNote(noteId){
-    let noteIdx = gNotes.findIndex((note) => note.id === noteId);
-    gNotes.splice(noteIdx, 1);
-    _saveNotesToStorage(gNotes);
-    console.log(gNotes)
-    return Promise.resolve(gNotes);
+    let notes = _loadNotesFromStorage()
+    notes = notes.filter(note => note.id !== noteId)
+    _saveNotesToStorage(notes)
+    return Promise.resolve(notes)
 }
 
 
@@ -207,9 +205,9 @@ function _createNotes() {
       },
     ];
   }
-  gNotes = notes;
-  _saveNotesToStorage(gNotes);
-//   return notes;
+  
+  _saveNotesToStorage(notes);
+  return notes;
 }
 
 function _saveNotesToStorage(notes) {
