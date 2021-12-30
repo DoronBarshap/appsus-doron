@@ -14,7 +14,7 @@ export function App(){
     <Router>
         <header className="app-header">
             <AppHeader/>
-        </header>
+        </header> <hr></hr>
         <main className="app-main">
             <Switch>
                 <Route component={MailApp} path="/mail"/>
