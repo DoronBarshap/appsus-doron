@@ -7,7 +7,7 @@
 .header-container {
     height: 70px;
     background-color: lightgrey;
-    margin: auto;
+    /* margin: auto; */
     
 }
 
@@ -21,14 +21,14 @@
 
 .app-nav{
     list-style-type: none;
-    width: 50%;
+    width: 25%;
     font-size: 1.05em;
     margin: 0;
     padding: 0;
 }
 
 .app-nav > *:not(:last-child) {
-    margin-inline-end: 50px;
+    margin-inline-end: 40px;
 }
 
 .nav-btn{

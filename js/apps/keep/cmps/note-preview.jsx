@@ -1,37 +1,38 @@
 import { noteService } from "../services/note.service.js";
+import {dynamicService} from "./note-dynamic-preview.jsx"
 const { Link } = ReactRouterDOM
 
-export function NotePreview({note}){
-    return (
-        <Link className="clean-link" to={`/note/${note.id}`}>
-            <article className="note-preview">
-                <div><h2>{note.type}</h2></div>
+
+
+export class NotePreview extends React.Component {
+    state ={
+        note:null  
+    }
+
+    componentDidMount(){
+        const note = this.props.note;
+        this.setState({note});
+        // console.log(note)
+    }
+
+    // onChangeColor(color) {
+    //     const note = this.state.note;
+    //     noteService.changeColor(note.id, color)
+    //     .then(this.setState({note}))
+    // }
+
+    render() {
+        const { note } = this.state;
+        if(!note) return <h2>no notes</h2>
+        return (
+            <article className="note-preview flex space-between" style={{backgroundColor: note.backgroundColor}}>
+                <dynamicService.NoteDynamicPreview
+                    note={note}
+                />
+                
             </article>
-        </Link>
-    )
-    
+        )
+    }
 }
-
-// export class NotePreview extends React.Component {
-//     state ={
-//         note:null,
-//         noteStyle:{}
-//     }
-
-//     componentDidMount(){
-//         const note = this.props.note;
-//         this.setState({note})
-//     }
-//     render() {
-//         const { note } = this.state;
-//         if(!note) return <h2>no notes</h2>
-//         return (
-//             <article className="note-preview">
-//                 <NoteEdit
-//                 note = {note} />
-//             </article>
-//         )
-//     }
-// }'
 
 
