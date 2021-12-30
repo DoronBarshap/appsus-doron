@@ -8,6 +8,7 @@ export const dynamicService = {
 
 
 function NoteDynamicPreview ({note}) {
+    console.log(note)
     if (!note || note && !note.info) return null
     return (
         <div className="note-box">
@@ -17,7 +18,7 @@ function NoteDynamicPreview ({note}) {
             <div className="note-content">
                 <p>{note.info.txt}</p>
                 <ul>
-                    {note.info.todos.map(todo => <li key={todo.id} className={`${todo.doneAt ? "done" : ""}`} style={{cursor: 'pointer'}} onClick={() => onMarkUnmarkTodo(todo.id)}>{todo.txt}</li>)}
+                    {note.info.todos.map(todo => <li key={todo.id} className={`${todo.doneAt ? "done" : ""}`} style={{cursor: 'pointer'}}>{todo.txt}</li>)}
                 </ul>
             </div>
         </div>

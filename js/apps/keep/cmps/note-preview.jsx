@@ -23,6 +23,7 @@ export class NotePreview extends React.Component {
 
     render() {
         const { note } = this.state;
+        
         if(!note) return <h2>no notes</h2>
         return (
             <article className="note-preview flex space-between" style={{backgroundColor: note.backgroundColor}}>

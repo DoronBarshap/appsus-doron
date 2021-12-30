@@ -1,5 +1,6 @@
 import { noteService } from "../services/note.service.js";
 import { NoteList } from "../cmps/note-list.jsx";
+import { AddNote } from "../cmps/add-note.jsx";
 const { Link } = ReactRouterDOM;
 
 export class NoteApp extends React.Component {
@@ -11,14 +12,11 @@ export class NoteApp extends React.Component {
         this.loadNotes();
     }
     
+
     loadNotes = () => {
-        const { filterBy } = this.state;
-        noteService.query(filterBy)
-        .then((notes) => {
-            this.setState({notes})
-        })
-
-
+        noteService.query().then((notes) => {
+            this.setState({ notes });
+          })
     }
     
     render() {
@@ -27,7 +25,7 @@ export class NoteApp extends React.Component {
         return (
             <section className="note-container">
                 <h1>My notes</h1>
-                {/* <AddNote onAddNote={this.onAddNote}/> */}
+                <AddNote loadNotes={this.loadNotes}/>
                 <NoteList notes = {notes}/>
             </section>
         )
