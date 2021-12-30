@@ -155,7 +155,7 @@ function _createNotes() {
           txt: "Me when Elhanan asks me how I'm doing . . .",
           todos: [],
         },
-        backgroundColor: "lightyellow",
+        backgroundColor: "rgb(240, 240, 196)",
       },
       {
         id: utilService.makeId(),
