@@ -3,7 +3,7 @@ import { DynamicNoteInput } from './note-input.jsx';
 
 export class AddNote extends React.Component {
   state = {
-    noteType: 'NoteText'
+    noteType: 'note-txt'
   };
 
   handleBtnClick(e, noteType) {
@@ -13,14 +13,14 @@ export class AddNote extends React.Component {
   handleInputSubmit = (ev) => {
     // if user hit enter
     if (ev.keyCode === 13) {
-      this.setState({ noteType: "NoteText" });
+      this.setState({ noteType: "note-txt" });
       noteService.createNote(ev.target.value, this.state.noteType);
       this.props.loadNotes();
-      this.clearFields(ev.target);
+      this.clearInput(ev.target);
     }
   };
 
-  clearFields(target) {
+  clearInput(target) {
     target.value = "";
   }
 
@@ -42,49 +42,49 @@ export class AddNote extends React.Component {
           <div className="note-btn-container ">
             <button
               className={
-                this.state.noteType === "NoteText" ? "active" : "undefined"
+                this.state.noteType === "note-txt" ? "active" : "undefined"
               }
               onClick={(e) => {
-                this.handleBtnClick(e, "NoteText");
+                this.handleBtnClick(e, "note-txt");
               }}
             > text
-              <i className="note-btn far fa-comment"></i>
+              <i className="note-btn"></i>
             </button>
           </div>
           <div className="note-btn-container">
             <button
               className={
-                this.state.noteType === "NoteImg" ? "active" : "undefined"
+                this.state.noteType === "note-img" ? "active" : "undefined"
               }
               onClick={(e) => {
-                this.handleBtnClick(e, "NoteImg");
+                this.handleBtnClick(e, "note-img");
               }}
             > img
-              <i className="note-btn far fa-image"></i>
+              <i className="note-btn"></i>
             </button>
           </div>
           <div className="note-btn-container">
             <button
               className={
-                this.state.noteType === "NoteVideo" ? "active" : "undefined"
+                this.state.noteType === "note-video" ? "active" : "undefined"
               }
               onClick={(e) => {
-                this.handleBtnClick(e, "NoteVideo");
+                this.handleBtnClick(e, "note-video");
               }}
             >video
-              <i className="note-btn fab fa-youtube"></i>
+              <i className="note-btn"></i>
             </button>
           </div>
           <div className="note-btn-container">
             <button
               className={
-                this.state.noteType === "NoteTodos" ? "active" : "undefined"
+                this.state.noteType === "note-todo" ? "active" : "undefined"
               }
               onClick={(e) => {
-                this.handleBtnClick(e, "NoteTodos");
+                this.handleBtnClick(e, "note-todo");
               }}
             >todo
-              <i className="note-btn fas fa-list-ul"></i>
+              <i className="note-btn list-ul"></i>
             </button>
           </div>
         </div>

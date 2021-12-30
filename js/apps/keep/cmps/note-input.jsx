@@ -1,16 +1,16 @@
 export function DynamicNoteInput({ noteType, handleInputSubmit }) {
     let placeholder;
     switch (noteType) {
-        case 'NoteText':
+        case 'note-txt':
             placeholder = "Enter text here"
             break;
-        case 'NoteImg':
+        case 'note-img':
             placeholder = "Enter image URL"
             break;
-        case 'NoteVideo':
+        case 'note-video':
             placeholder = "Enter video URL"
             break;
-        case 'NoteTodos':
+        case 'note-todo':
             placeholder = "Enter todo-list "
             break;
         default:

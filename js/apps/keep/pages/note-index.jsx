@@ -1,7 +1,7 @@
 import { noteService } from "../services/note.service.js";
 import { NoteList } from "../cmps/note-list.jsx";
 import { AddNote } from "../cmps/add-note.jsx";
-const { Link } = ReactRouterDOM;
+// const { Link } = ReactRouterDOM;
 
 export class NoteApp extends React.Component {
     state = {

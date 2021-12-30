@@ -35,10 +35,6 @@ function removeNote(noteId){
     return Promise.resolve(gNotes);
 }
 
-function changeVideoLinkEmbed(linkStr) {
-    let embedLink = linkStr.replace('watch?v=', 'embed/');
-    return embedLink;
-}
 
 function createNote(inputVal, noteType) {
     if (!inputVal) return;
@@ -50,28 +46,28 @@ function createNote(inputVal, noteType) {
     };
   
     switch (noteType) {
-      case 'NoteText':
+      case 'note-txt':
         note.info = {
             title:'New note',
             txt: inputVal,
             todos:[],
         };
         break;
-      case 'NoteImg':
+      case 'note-img':
         note.info = {
           url: inputVal,
           title:'New note',
           todos:[],
         };
         break;
-      case 'NoteVideo':
+      case 'note-video':
         note.info = {
           video: inputVal,
           title:'New note',
           todos:[],
         };
         break;
-      case 'NoteTodos':
+      case 'note-todo':
         note.info = {
           todos: [],
           title:'New note',
@@ -79,7 +75,7 @@ function createNote(inputVal, noteType) {
         break;
   
       default:
-        return 'switch error';
+        return 'Error';
     }
   
     addNote(note);
