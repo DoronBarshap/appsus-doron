@@ -12,7 +12,7 @@ function NoteDynamicPreview ({note}) {
     if (!note || note && !note.info) return null;
     return (
         <div className="note-box">
-            {note.info.title && <h3>{note.info.title}</h3>}
+            {note.info.title && <h2>{note.info.title}</h2>}
             {note.info.url && <img src={note.info.url} />}
             {note.info.video && <iframe src={note.info.video} width="100%" height="200" />}
             <div className="note-content">

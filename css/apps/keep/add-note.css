@@ -3,7 +3,6 @@
     padding: 0.5rem 0;
     background-color: rgb(245, 233, 233);
     flex-direction: column;
-    border: .2px solid #e0cfcf;
     border-radius: 10px;
     width: 50%;
   }
@@ -26,13 +25,9 @@
     border: none;
     font-family: 'Balsamiq' ;
   }
-  
-  .note-create button i:hover {
-    color: black;
-  }
-  
+   
   .note-create .active {
-    color: black;
+    color: rgb(48, 39, 39);
   }
   
   .note-btn {
