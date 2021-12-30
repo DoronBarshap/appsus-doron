@@ -4,7 +4,7 @@ import { storageService } from "../../../services/storage.service.js";
 export const noteService = {
   query,
   createNote,
-  removeNote
+  removeNote,
 };
 
 const NOTES_KEY = "notesDB";
@@ -15,73 +15,68 @@ function query(filterBy = null) {
   const notes = _loadNotesFromStorage();
   if (!filterBy) return Promise.resolve(notes);
   // else const notesToDisplay = _getFilteredNotes(notes, filterBy);
-//   return Promise.resolve(notesToDisplay);
+  //   return Promise.resolve(notesToDisplay);
 }
 
 function addNote(noteToAdd) {
-    let notes = _loadNotesFromStorage();
-    console.log(noteToAdd)
-    notes.unshift(noteToAdd);
-    _saveNotesToStorage(notes);
-    return Promise.resolve(noteToAdd);
+  let notes = _loadNotesFromStorage();
+  console.log(noteToAdd);
+  notes.unshift(noteToAdd);
+  _saveNotesToStorage(notes);
+  return Promise.resolve(noteToAdd);
 }
 
-function removeNote(noteId){
-    let notes = _loadNotesFromStorage()
-    notes = notes.filter(note => note.id !== noteId)
-    _saveNotesToStorage(notes)
-    return Promise.resolve(notes)
+function removeNote(noteId) {
+  let notes = _loadNotesFromStorage();
+  notes = notes.filter((note) => note.id !== noteId);
+  _saveNotesToStorage(notes);
+  return Promise.resolve(notes);
 }
-
 
 function createNote(inputVal, noteType) {
-    if (!inputVal) return;
-    let note = {
-      id: utilService.makeId(),
-      type: noteType,
-      isPinned: false,
-      backgroundColor: 'whitesmoke',
-    };
-  
-    switch (noteType) {
-      case 'note-txt':
-        note.info = {
-            title:'New note',
-            txt: inputVal,
-            todos:[],
-        };
-        break;
-      case 'note-img':
-        note.info = {
-          url: inputVal,
-          title:'New note',
-          todos:[],
-        };
-        break;
-      case 'note-video':
-        note.info = {
-          video: inputVal,
-          title:'New note',
-          todos:[],
-        };
-        break;
-      case 'note-todo':
-        note.info = {
-          todos: [],
-          title:'New note',
-        };
-        break;
-  
-      default:
-        return 'Error';
-    }
-  
-    addNote(note);
+  if (!inputVal) return;
+  let note = {
+    id: utilService.makeId(),
+    type: noteType,
+    isPinned: false,
+    backgroundColor: "whitesmoke",
+  };
+
+  switch (noteType) {
+    case "note-txt":
+      note.info = {
+        title: "New note",
+        txt: inputVal,
+        todos: [],
+      };
+      break;
+    case "note-img":
+      note.info = {
+        url: inputVal,
+        title: "New note",
+        todos: [],
+      };
+      break;
+    case "note-video":
+      note.info = {
+        video: inputVal,
+        title: "New note",
+        todos: [],
+      };
+      break;
+    case "note-todo":
+      note.info = {
+        todos: [],
+        title: "New note",
+      };
+      break;
+
+    default:
+      return "Error";
   }
 
-
-
-
+  addNote(note);
+}
 
 function _createNotes() {
   let notes = _loadNotesFromStorage();
@@ -205,7 +200,7 @@ function _createNotes() {
       },
     ];
   }
-  
+
   _saveNotesToStorage(notes);
   return notes;
 }
@@ -217,4 +212,3 @@ function _saveNotesToStorage(notes) {
 function _loadNotesFromStorage() {
   return storageService.load(NOTES_KEY);
 }
-
