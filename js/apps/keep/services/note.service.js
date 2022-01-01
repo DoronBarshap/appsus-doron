@@ -281,17 +281,17 @@ function _createNotes() {
             {
               id: utilService.makeId(),
               txt: "Travel to Africa",
-              doneAt: Date.now(),
+              doneAt: null,
             },
             {
               id: utilService.makeId(),
               txt: "Stay at home all day",
-              doneAt: null,
+              doneAt: Date.now(),
             },
             {
               id: utilService.makeId(),
               txt: "Binge Brooklyn 99 (again)",
-              doneAt: null,
+              doneAt: Date.now(),
             },
           ],
         },

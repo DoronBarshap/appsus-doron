@@ -9,6 +9,10 @@
     color: rgb(48, 39, 39);
 }
 
+li{
+    list-style-type: circle;
+}
+
 .done {
     text-decoration: line-through;
 }
