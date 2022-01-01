@@ -28,10 +28,11 @@ export class NoteApp extends React.Component {
     .then(this.loadNotes);
   }
 
-  onChangeColor =(noteId, color) => {
+ 
+  onChangeColor = (noteId, color) => {
     noteService.changeColor(noteId, color)
-    .then(this.loadNotes);
-}
+    .then(this.loadNotes)
+  }
 
   render() {
     const { notes } = this.state;
@@ -44,7 +45,7 @@ export class NoteApp extends React.Component {
         notes={notes} 
         onRemoveNote={this.onRemoveNote}
         onDuplicateNote={this.onDuplicateNote}
-        onChangeColor ={this.onChangeColor}
+        onChangeColor={this.onChangeColor}
          />
       </section>
     );

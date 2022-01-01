@@ -1,6 +1,6 @@
 import { noteService } from "../services/note.service.js";
 import { dynamicService } from "./note-dynamic-preview.jsx";
-// const { Link } = ReactRouterDOM;
+
 
 export class NotePreview extends React.Component {
   state = {
@@ -19,11 +19,17 @@ export class NotePreview extends React.Component {
     }})
   }
 
+  // onChangeColor = (noteId, color) => {
+    
+  //   // const note = this.state.note
+  //   // noteService.changeColor(note.id, color)
+  //   // .then(this.setState({ note }))
+  //   const note = this.props.note.id;
+  //   noteService.changeColor(noteId, color)
+  //   .then(this.setState({note}))
+  // }
 
 
-  onClickedColor = (color) => {
-    this.props.onChangeColor(this.props.note.id, 'gold')
-  }
 
   render() {
     const { note } = this.state;
@@ -40,7 +46,7 @@ export class NotePreview extends React.Component {
         note={note}
         onRemoveNote={this.props.onRemoveNote}
         onDuplicateNote={this.props.onDuplicateNote}
-        onClickedColor={this.props.onClickedColor}
+        onChangeColor={this.props.onChangeColor}
         
         />
       </article>

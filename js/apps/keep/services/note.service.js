@@ -49,7 +49,9 @@ function duplicateNote(noteId) {
     return Promise.resolve(notes);
 }
 
-function changeColor(noteId, color ='gold'){
+// changes color only after manually refreshing the page
+function changeColor(noteId, color){
+    console.log(noteId, color)
     const notes = _loadNotesFromStorage();
     const note = notes.find(note => note.id === noteId);
     note.backgroundColor = color;
