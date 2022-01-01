@@ -21,9 +21,9 @@ export class NotePreview extends React.Component {
 
 
 
-  // onClickedColor = (color) => {
-  //   this.props.onChangeColor(this.props.note.id, 'gold')
-  // }
+  onClickedColor = (color) => {
+    this.props.onChangeColor(this.props.note.id, 'gold')
+  }
 
   render() {
     const { note } = this.state;
@@ -40,7 +40,7 @@ export class NotePreview extends React.Component {
         note={note}
         onRemoveNote={this.props.onRemoveNote}
         onDuplicateNote={this.props.onDuplicateNote}
-        onChangeColor={this.props.onChangeColor}
+        onClickedColor={this.props.onClickedColor}
         
         />
       </article>

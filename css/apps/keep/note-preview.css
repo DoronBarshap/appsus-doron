@@ -22,3 +22,25 @@
     outline: none;
     border-radius: 10px;
 }
+
+
+.edit-note{
+    text-align: center;
+    justify-content: space-between;
+}
+
+.edit-btn{
+    margin:0.5em;
+    border: none;
+    background-color: transparent;
+    color: rgb(48, 39, 39);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    align-content: center;
+    align-items: center;
+}
+
+.edit-btn:hover{
+    background-color: rgb(247, 235, 247);
+}

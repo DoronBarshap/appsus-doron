@@ -1,4 +1,5 @@
 import { noteService } from "../services/note.service.js"
+import { NoteColors } from "./note-colors.jsx";
 
 
 export const dynamicService = {
@@ -28,14 +29,17 @@ function NoteDynamicPreview ({note}) {
 
 
 
-export function editNote({note, onRemoveNote, onDuplicateNote, onChangeColor}) {
+export function editNote({note, onRemoveNote, onDuplicateNote, onClickedColor}) {
     // console.log(note)
     return (
         <div>
             <div className="edit-note">
-            <button className="edit-btn" onClick={() => onChangeColor(note.id)}>C</button>
-            <button className="edit-btn" onClick={() => onRemoveNote(note.id)}>X</button>
-            <button className="edit-btn" onClick={() => onDuplicateNote(note.id)}>D</button>
+            <NoteColors className="edit-btn" onClickedColor={onClickedColor}/>
+            <button className="edit-btn"><i className="fas fa-thumbtack"></i></button>
+            <button className="edit-btn"><i className="far fa-edit"></i></button>
+            <button className="edit-btn" onClick={() => onDuplicateNote(note.id)}><i className="fas fa-clone"></i></button>
+            <button className="edit-btn" onClick={() => onRemoveNote(note.id)}><i className="fas fa-trash-alt"></i></button>
+            <button className="edit-btn"><i className="fas fa-envelope-open-text"></i></button>
             </div>
         </div>
         )
