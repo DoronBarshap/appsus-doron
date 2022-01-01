@@ -3,6 +3,7 @@ import { DynamicNoteInput } from './note-input.jsx';
 
 export class AddNote extends React.Component {
   state = {
+    title: 'Title',
     noteType: 'note-txt'
   };
 
@@ -25,7 +26,7 @@ export class AddNote extends React.Component {
   }
 
   render() {
-    const { noteType } = this.state;
+    const { noteType, title } = this.state;
     return (
       <div className="note-create flex align-center">
         <div className="note-input-container">
@@ -33,6 +34,7 @@ export class AddNote extends React.Component {
           {
             <DynamicNoteInput
               noteType={noteType}
+              title={title}
               handleInputSubmit={this.handleInputSubmit}
             />
           }

@@ -5,6 +5,9 @@ export const noteService = {
   query,
   createNote,
   removeNote,
+  getNoteById,
+  duplicateNote,
+  changeColor,
 };
 
 const NOTES_KEY = "notesDB";
@@ -18,9 +21,14 @@ function query(filterBy = null) {
   //   return Promise.resolve(notesToDisplay);
 }
 
+function getNoteById(noteId) {
+    const notes = _loadNotesFromStorage();
+    const note = notes.find(note => note.id === noteId);
+    return note;
+ }
+
 function addNote(noteToAdd) {
   let notes = _loadNotesFromStorage();
-  console.log(noteToAdd);
   notes.unshift(noteToAdd);
   _saveNotesToStorage(notes);
   return Promise.resolve(noteToAdd);
@@ -31,6 +39,22 @@ function removeNote(noteId) {
   notes = notes.filter((note) => note.id !== noteId);
   _saveNotesToStorage(notes);
   return Promise.resolve(notes);
+}
+
+function duplicateNote(noteId) {
+    const notes = _loadNotesFromStorage();
+    const currNote = getNoteById(noteId);
+    notes.unshift({...currNote, id: utilService.makeId()});
+    _saveNotesToStorage(notes);
+    return Promise.resolve(notes);
+}
+
+function changeColor(noteId, color ='gold'){
+    const notes = _loadNotesFromStorage();
+    const note = notes.find(note => note.id === noteId);
+    note.backgroundColor = color;
+    _saveNotesToStorage(notes);
+    return Promise.resolve(notes);
 }
 
 function createNote(inputVal, noteType) {

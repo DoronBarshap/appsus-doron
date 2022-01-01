@@ -3,6 +3,7 @@ import { noteService } from "../services/note.service.js"
 
 export const dynamicService = {
     NoteDynamicPreview,
+    editNote
     
 }
 
@@ -26,3 +27,16 @@ function NoteDynamicPreview ({note}) {
 }
 
 
+
+export function editNote({note, onRemoveNote, onDuplicateNote, onChangeColor}) {
+    // console.log(note)
+    return (
+        <div>
+            <div className="edit-note">
+            <button className="edit-btn" onClick={() => onChangeColor(note.id)}>C</button>
+            <button className="edit-btn" onClick={() => onRemoveNote(note.id)}>X</button>
+            <button className="edit-btn" onClick={() => onDuplicateNote(note.id)}>D</button>
+            </div>
+        </div>
+        )
+}
