@@ -46,8 +46,8 @@ function addNote(noteToAdd) {
 }
 
 function removeNote(currNote) {
-  const notes = _loadNotesFromStorage();
-  const pinnedNotes = _loadPinnedNotesFromStorage();
+  let notes = _loadNotesFromStorage();
+  let pinnedNotes = _loadPinnedNotesFromStorage();
   if(!currNote.isPinned){
     notes = notes.filter((note) => note.id !== currNote.id);
     _saveNotesToStorage(notes);
