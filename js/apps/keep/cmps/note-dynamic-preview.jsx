@@ -33,7 +33,7 @@ function editNote({note, onRemoveNote, onDuplicateNote, onChangeColor, onToggleP
     return (
         <div>
             <div className="edit-note">
-            <NoteColors className="edit-btn" noteId={note.id} onChangeColor={onChangeColor}/>
+            <NoteColors className="edit-btn" noteId={note.id} note={note} onChangeColor={onChangeColor}/>
             <button className="edit-btn" onClick={() => onTogglePin(note)}><i className="fas fa-thumbtack"></i></button>
             <button className="edit-btn"><i className="far fa-edit"></i></button>
             <button className="edit-btn" onClick={() => onDuplicateNote(note)}><i className="fas fa-clone"></i></button>

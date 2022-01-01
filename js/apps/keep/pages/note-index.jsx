@@ -35,8 +35,11 @@ export class NoteApp extends React.Component {
   }
 
  
-  onChangeColor = (noteId, color) => {
+  onChangeColor = (note, noteId, color) => {
     noteService.changeColor(noteId, color)
+    .then((note)=> {
+      this.setState({note})
+    })
     .then(this.loadNotes)
   }
 

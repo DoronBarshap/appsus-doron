@@ -83,7 +83,7 @@ function changeColor(noteId, color){
     const note = notes.find(note => note.id === noteId);
     note.backgroundColor = color;
     _saveNotesToStorage(notes);
-    return Promise.resolve();
+    return Promise.resolve(note);
 }
 
 function togglePin(note) {
@@ -107,7 +107,7 @@ function togglePin(note) {
  }
 
  function toggleTodo(note, todoId){
-     console.log(note, todoId)
+    //  console.log(note, todoId)
      let currNote;
      let todo;
      const notes = _loadNotesFromStorage();
@@ -124,7 +124,7 @@ function togglePin(note) {
 
     if(todo.doneAt) todo.doneAt= null;
     else if(!todo.dontAt) todo.doneAt= Date.now();
-    console.log(todo.doneAt)
+    // console.log(todo.doneAt)
     _saveNotesToStorage(notes)
     _savePinnedNotesToStorage(pinnedNotes)
     return Promise.resolve(currNote);
@@ -206,6 +206,18 @@ function _createNotes() {
       },
       {
         id: utilService.makeId(),
+        type: "note-txt",
+        isPinned: true,
+        info: {
+          title: "WARNING!",
+          url: "https://ih1.redbubble.net/image.747123881.8034/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg",
+          txt: "This code is not for the faint of heart. Deep breaths are advised as a precaution!",
+          todos: [],
+        },
+        backgroundColor: "rgb(246, 198, 47)",
+      },
+      {
+        id: utilService.makeId(),
         type: "note-todo",
         isPinned: false,
         info: {
@@ -224,6 +236,17 @@ function _createNotes() {
       },
       {
         id: utilService.makeId(),
+        type: "note-video",
+        isPinned: false,
+        info: {
+          title: "They said sprint 3 will be fun!",
+          txt: "I'm not superstitious, but I am a little stitious.",
+          todos: [],
+        },
+        backgroundColor: "silver",
+      },
+      {
+        id: utilService.makeId(),
         type: "note-txt",
         isPinned: false,
         info: {
@@ -235,14 +258,29 @@ function _createNotes() {
       },
       {
         id: utilService.makeId(),
-        type: "note-video",
+        type: "note-todo",
         isPinned: false,
         info: {
-          title: "They said sprint 3 is going to be fun!",
-          txt: "I'm not superstitious, but I am a little stitious.",
+          title: "Coding ninja 101",
+          todos: [{id: utilService.makeId(), txt: "Learn the basics", doneAt: Date.now()},
+          {id: utilService.makeId(), txt: "Crash the code one hour before deadline", doneAt: Date.now()},
+          {id: utilService.makeId(), txt: "Cry yourself to sleep", doneAt: Date.now()},
+          {id: utilService.makeId(), txt: "Break the computer", doneAt: Date.now()},
+          {id: utilService.makeId(), txt: "Become the computer", doneAt: null}],
+        },
+        backgroundColor: "rgb(236, 199, 168)",
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-txt",
+        isPinned: false,
+        info: {
+          title:'Small kitty, worm kitty, little ball of fur. Happy kitty, sleepy kitty, purr purr purr . . .',
+          url:'',
+          txt: '',
           todos: [],
         },
-        backgroundColor: "silver",
+        backgroundColor: "rgb(209, 172, 204)",
       },
       {
         id: utilService.makeId(),
@@ -264,7 +302,7 @@ function _createNotes() {
         info: {
           title: "Spidey!",
           url: "https://assets-prd.ignimgs.com/2021/11/08/fdo0mohvqaap5td-1636343382417.jpg",
-          txt: " Spider-Man, Spider-Man Does whatever a spider can Spins a web, any size, Catches thieves just like flies Look Out! Here comes the Spider-Man.",
+          txt: " Spider-Man, Spider-Man Does whatever a spider can. Spins a web, any size, Catches thieves just like flies. Look Out! Here comes the Spider-Man.",
           source:
             "https://www.lyricsondemand.com/tvthemes/spidermanlyrics.html!",
           todos: [],
@@ -272,7 +310,7 @@ function _createNotes() {
       },
       {
         id: utilService.makeId(),
-        type: "note-txt",
+        type: "note-todo",
         isPinned: false,
         info: {
           title: "My bucket list",

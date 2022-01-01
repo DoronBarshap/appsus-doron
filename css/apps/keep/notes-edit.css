@@ -1,10 +1,10 @@
 .edit-note{
     opacity:0;
 }
-
+/* 
 .edit-note:hover{
     opacity: 1;
-}
+} */
 
 .edit-btn{
     cursor: pointer;
