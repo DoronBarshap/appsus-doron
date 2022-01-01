@@ -7,4 +7,14 @@
 
 .note-container{
     font-family: 'Balsamiq' ;
+    /* max-width: 1300px; */
+    margin:auto;
 }
+
+@media (min-width:560px) {
+    .note-container{
+        max-width: 1300px;
+
+    }
+}
+

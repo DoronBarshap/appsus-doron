@@ -64,7 +64,7 @@ function changeColor(noteId, color){
     const note = notes.find(note => note.id === noteId);
     note.backgroundColor = color;
     _saveNotesToStorage(notes);
-    return Promise.resolve(notes);
+    return Promise.resolve();
 }
 
 function togglePin(note) {
@@ -152,9 +152,10 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-txt",
-        isPinned: false,
+        isPinned: true,
         info: {
           title: "Don't forget!",
+          url: "https://media.giphy.com/media/DhstvI3zZ598Nb1rFf/giphy.gif",
           txt: "We are in 2022!",
           todos: [],
         },
@@ -260,7 +261,7 @@ function _createNotes() {
   if(!pinnedNotes || !pinnedNotes.length) {
       pinnedNotes = notes.filter(note => note.isPinned);
       
-      console.log(pinnedNotes)
+    //   console.log(pinnedNotes)
       _savePinnedNotesToStorage(pinnedNotes)
     }
     notes = notes.filter(note => !note.isPinned)
