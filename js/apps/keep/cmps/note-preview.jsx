@@ -25,6 +25,12 @@ export class NotePreview extends React.Component {
     }})
   }
 
+  onToggleTodo = (todoId) =>{
+    const { note } = this.state;
+    noteService.toggleTodo(note, todoId).then((note) =>
+    this.setState({note}));
+  }
+
   // onChangeColor = (noteId, color) => {
     
   //   // const note = this.state.note
@@ -48,6 +54,7 @@ export class NotePreview extends React.Component {
       >
         <dynamicService.NoteDynamicPreview
           note={note}
+          onToggleTodo={this.onToggleTodo}
           />
         <dynamicService.editNote
         note={note}

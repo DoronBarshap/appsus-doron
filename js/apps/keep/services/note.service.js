@@ -9,7 +9,8 @@ export const noteService = {
   duplicateNote,
   changeColor,
   setPinnedNotes,
-  togglePin
+  togglePin,
+  toggleTodo,
 };
 
 const NOTES_KEY = 'notesDB';
@@ -103,6 +104,30 @@ function togglePin(note) {
     _saveNotesToStorage(notes)
     _savePinnedNotesToStorage(pinnedNotes)
     return Promise.resolve()
+ }
+
+ function toggleTodo(note, todoId){
+     console.log(note, todoId)
+     let currNote;
+     let todo;
+     const notes = _loadNotesFromStorage();
+     const pinnedNotes = _loadPinnedNotesFromStorage();
+    if(!note.isPinned){
+        const idx = notes.findIndex(n=> n.id === note.id);
+        currNote = notes[idx];
+        todo = currNote.info.todos.find(todo=> todo.id === todoId);
+    } else if (note.isPinned){
+        idx = pinnedNotes.findIndex(n=> n.id === note.id);
+        currNote = pinnedNotes[idx];
+        todo = currNote.info.todos.find(todo => todo.id === todoId);
+    }
+
+    if(todo.doneAt) todo.doneAt= null;
+    else if(!todo.dontAt) todo.doneAt= Date.now();
+    console.log(todo.doneAt)
+    _saveNotesToStorage(notes)
+    _savePinnedNotesToStorage(pinnedNotes)
+    return Promise.resolve(currNote);
  }
 
 
