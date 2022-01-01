@@ -24,13 +24,13 @@ export class NoteApp extends React.Component {
     })
   };
 
-  onRemoveNote = (noteId) => {
-    noteService.removeNote(noteId)
+  onRemoveNote = (note) => {
+    noteService.removeNote(note)
     .then(this.loadNotes);
   };
 
-  onDuplicateNote = (noteId) => {
-    noteService.duplicateNote(noteId)
+  onDuplicateNote = (note) => {
+    noteService.duplicateNote(note)
     .then(this.loadNotes);
   }
 

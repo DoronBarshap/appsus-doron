@@ -14,6 +14,7 @@ export const noteService = {
 
 const NOTES_KEY = 'notesDB';
 const PINNED_KEY= 'pinnedDB';
+var gNotes;
 
 _createNotes();
 
@@ -37,24 +38,41 @@ function getNoteById(noteId) {
 
 function addNote(noteToAdd) {
   let notes = _loadNotesFromStorage();
+  gNotes.push(noteToAdd);
   notes.unshift(noteToAdd);
   _saveNotesToStorage(notes);
   return Promise.resolve(noteToAdd);
 }
 
-function removeNote(noteId) {
-  let notes = _loadNotesFromStorage();
-  notes = notes.filter((note) => note.id !== noteId);
-  _saveNotesToStorage(notes);
-  return Promise.resolve(notes);
-}
-
-function duplicateNote(noteId) {
-    const notes = _loadNotesFromStorage();
-    const currNote = getNoteById(noteId);
-    notes.unshift({...currNote, id: utilService.makeId()});
+function removeNote(currNote) {
+  const notes = _loadNotesFromStorage();
+  const pinnedNotes = _loadPinnedNotesFromStorage();
+  if(!currNote.isPinned){
+    notes = notes.filter((note) => note.id !== currNote.id);
     _saveNotesToStorage(notes);
     return Promise.resolve(notes);
+  } else if(currNote.isPinned) {
+      pinnedNotes = pinnedNotes.filter((note) => note.id !== currNote.id);
+      _savePinnedNotesToStorage(pinnedNotes)
+      return Promise.resolve(pinnedNotes);
+  }
+}
+
+function duplicateNote(currNote) {
+    const notes = _loadNotesFromStorage();
+    const pinnedNotes= _loadPinnedNotesFromStorage();
+    if(!currNote.isPinned){
+    const note = notes.find((note) => note.id === currNote.id);
+    notes.unshift({...note, id: utilService.makeId()});
+    _saveNotesToStorage(notes);
+    return Promise.resolve(notes);
+    } else if (currNote.isPinned) {
+        const pinnedNote = pinnedNotes.find((note) => note.id === currNote.id);
+        pinnedNotes.unshift({...pinnedNote, id:utilService.makeId()});
+        _savePinnedNotesToStorage(pinnedNotes)
+      return Promise.resolve(pinnedNotes);
+    }
+
 }
 
 // changes color only after manually refreshing the page
@@ -256,7 +274,7 @@ function _createNotes() {
       },
     ];
   }
-
+  gNotes =notes;
   let pinnedNotes = _loadPinnedNotesFromStorage();
   if(!pinnedNotes || !pinnedNotes.length) {
       pinnedNotes = notes.filter(note => note.isPinned);
