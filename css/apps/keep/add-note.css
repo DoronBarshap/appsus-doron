@@ -5,6 +5,7 @@
     flex-direction: column;
     border-radius: 10px;
     width: 50%;
+    height: 200px;
   }
   
   .note-create input {

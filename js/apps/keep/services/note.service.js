@@ -8,9 +8,12 @@ export const noteService = {
   getNoteById,
   duplicateNote,
   changeColor,
+  setPinnedNotes,
+  togglePin
 };
 
-const NOTES_KEY = "notesDB";
+const NOTES_KEY = 'notesDB';
+const PINNED_KEY= 'pinnedDB';
 
 _createNotes();
 
@@ -19,6 +22,11 @@ function query(filterBy = null) {
   if (!filterBy) return Promise.resolve(notes);
   // else const notesToDisplay = _getFilteredNotes(notes, filterBy);
   //   return Promise.resolve(notesToDisplay);
+}
+
+function setPinnedNotes(){
+    const pinnedNotes = _loadPinnedNotesFromStorage();
+    return Promise.resolve(pinnedNotes);
 }
 
 function getNoteById(noteId) {
@@ -58,6 +66,27 @@ function changeColor(noteId, color){
     _saveNotesToStorage(notes);
     return Promise.resolve(notes);
 }
+
+function togglePin(note) {
+    const noteId = note.id
+    let notes = _loadNotesFromStorage()
+    let pinnedNotes = _loadPinnedNotesFromStorage()
+    if(!pinnedNotes) pinnedNotes = []
+    if(!note.isPinned){
+        let noteIdx = notes.findIndex(note => note.id === noteId)
+        notes.splice(noteIdx,1)
+        pinnedNotes = [note,...pinnedNotes]
+    }else{
+        let noteIdx = pinnedNotes.findIndex(note => note.id === noteId)
+        pinnedNotes.splice(noteIdx,1)
+        notes = [note,...notes]
+    }
+    note.isPinned = !note.isPinned
+    _saveNotesToStorage(notes)
+    _savePinnedNotesToStorage(pinnedNotes)
+    return Promise.resolve()
+ }
+
 
 function createNote(inputVal, noteType) {
   if (!inputVal) return;
@@ -123,7 +152,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-txt",
-        isPinned: true,
+        isPinned: false,
         info: {
           title: "Don't forget!",
           txt: "We are in 2022!",
@@ -134,7 +163,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-todo",
-        isPinned: true,
+        isPinned: false,
         info: {
           title: "To Do:",
           url: "https://see.news/wp-content/uploads/2021/05/%D8%A9-750x375.jpg",
@@ -152,7 +181,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-txt",
-        isPinned: true,
+        isPinned: false,
         info: {
           title: "Look at this!",
           todos: [],
@@ -163,7 +192,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-video",
-        isPinned: true,
+        isPinned: false,
         info: {
           title: "They said sprint 3 is going to be fun!",
           txt: "I'm not superstitious, but I am a little stitious.",
@@ -174,7 +203,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-video",
-        isPinned: true,
+        isPinned: false,
         info: {
           title: "MOOD",
           url: "https://media.giphy.com/media/6Q3M4BIK0lX44/giphy.gif",
@@ -186,7 +215,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-img",
-        isPinned: true,
+        isPinned: false,
         backgroundColor: "pink",
         info: {
           title: "Spidey!",
@@ -200,7 +229,7 @@ function _createNotes() {
       {
         id: utilService.makeId(),
         type: "note-txt",
-        isPinned: true,
+        isPinned: false,
         info: {
           title: "My bucket list",
 
@@ -227,14 +256,28 @@ function _createNotes() {
     ];
   }
 
-  _saveNotesToStorage(notes);
-  return notes;
+  let pinnedNotes = _loadPinnedNotesFromStorage();
+  if(!pinnedNotes || !pinnedNotes.length) {
+      pinnedNotes = notes.filter(note => note.isPinned);
+      
+      console.log(pinnedNotes)
+      _savePinnedNotesToStorage(pinnedNotes)
+    }
+    notes = notes.filter(note => !note.isPinned)
+    _saveNotesToStorage(notes);
+    return notes, pinnedNotes;
 }
 
 function _saveNotesToStorage(notes) {
   storageService.save(NOTES_KEY, notes);
 }
+function _savePinnedNotesToStorage(notes) {
+  storageService.save(PINNED_KEY, notes);
+}
 
 function _loadNotesFromStorage() {
   return storageService.load(NOTES_KEY);
+}
+function _loadPinnedNotesFromStorage() {
+  return storageService.load(PINNED_KEY);
 }

@@ -1,13 +1,28 @@
 import { NotePreview } from "./note-preview.jsx";
 
-export function NoteList({ notes, onRemoveNote, onDuplicateNote, onChangeColor }) {
-  // console.log(notes)
+export function NoteList({ notes, pinnedNotes, onRemoveNote, onDuplicateNote, onChangeColor, onPinNote }) {
   // if (!notes.length) return <h1>no notes</h1>;
   return (
+    <section>
+      <h1>My pinned notes</h1>
     <section className="note-list">
-      {notes.map((note) => 
-        <NotePreview onRemoveNote={onRemoveNote} onDuplicateNote={onDuplicateNote} onChangeColor={onChangeColor} key={note.id} note={note} />
+      <div className="pinned-list">
+      {pinnedNotes.map((note) => 
+        <NotePreview onRemoveNote={onRemoveNote} onDuplicateNote={onDuplicateNote} onChangeColor={onChangeColor} onPinNote={onPinNote} key={note.id} note={note} />
       )}
+      </div> 
+      
+    </section>
+      <hr></hr>
+      <h1>Notes</h1>
+    <section className="note-list">
+      <div className="notes-list">
+      {notes.map((note) => 
+        <NotePreview onRemoveNote={onRemoveNote} onDuplicateNote={onDuplicateNote} onChangeColor={onChangeColor} onPinNote={onPinNote} key={note.id} note={note} />
+      )}
+
+      </div>
+    </section>
     </section>
   );
 }

@@ -29,12 +29,12 @@ export function NoteDynamicPreview ({note}) {
 
 
 
-function editNote({note, onRemoveNote, onDuplicateNote, onChangeColor}) {
+function editNote({note, onRemoveNote, onDuplicateNote, onChangeColor, onTogglePin}) {
     return (
         <div>
             <div className="edit-note">
             <NoteColors className="edit-btn" noteId={note.id} onChangeColor={onChangeColor}/>
-            <button className="edit-btn"><i className="fas fa-thumbtack"></i></button>
+            <button className="edit-btn" onClick={() => onTogglePin(note)}><i className="fas fa-thumbtack"></i></button>
             <button className="edit-btn"><i className="far fa-edit"></i></button>
             <button className="edit-btn" onClick={() => onDuplicateNote(note.id)}><i className="fas fa-clone"></i></button>
             <button className="edit-btn" onClick={() => onRemoveNote(note.id)}><i className="fas fa-trash-alt"></i></button>

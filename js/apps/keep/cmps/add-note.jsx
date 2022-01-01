@@ -1,11 +1,28 @@
 import { noteService } from "../services/note.service.js";
 import { DynamicNoteInput } from './note-input.jsx';
+const { withRouter } = ReactRouterDOM;
 
-export class AddNote extends React.Component {
+
+
+class _AddNote extends React.Component {
   state = {
-    title: 'Title',
-    noteType: 'note-txt'
+    noteType: 'note-txt',
+    note: {
+      type: 'note-txt',
+      isPinned: false,
+      info: {
+        txt:'',
+        title:'',
+        url:'',
+        todos:[]
+      },
+      backgroundColor: 'whitesmoke'
+    },
   };
+
+  // componentDidMount(){
+  //   const query
+  // }
 
   handleBtnClick(e, noteType) {
     this.setState({ noteType });
@@ -21,6 +38,8 @@ export class AddNote extends React.Component {
     }
   };
 
+  
+
   clearInput(target) {
     target.value = "";
   }
@@ -30,7 +49,9 @@ export class AddNote extends React.Component {
     return (
       <div className="note-create flex align-center">
         <div className="note-input-container">
-           
+          
+   
+          
           {
             <DynamicNoteInput
               noteType={noteType}
@@ -94,3 +115,5 @@ export class AddNote extends React.Component {
     );
   }
 }
+
+export const AddNote = withRouter(_AddNote);

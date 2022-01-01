@@ -19,7 +19,6 @@ export function DynamicNoteInput({ title, noteType, handleInputSubmit }) {
   }
 
   return (
-    <input name={title} placeholder="title" onKeyDown={handleInputSubmit}/>,
     <input
       name={noteType.noteType}
       placeholder={placeholder}
