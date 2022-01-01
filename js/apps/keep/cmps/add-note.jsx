@@ -8,7 +8,6 @@ class _AddNote extends React.Component {
   state = {
     noteType: 'note-txt',
     note: {
-      type: 'note-txt',
       isPinned: false,
       info: {
         txt:'',
