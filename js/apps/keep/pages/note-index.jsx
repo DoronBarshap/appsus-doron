@@ -40,13 +40,11 @@ export class NoteApp extends React.Component {
     .then(this.loadNotes)
   }
 
-  onPinNote = (noteId) => {
-    noteService.toggleNotePin(noteId)
-       .then(({ notes, isPinned }) => {
-          this.setState(prevState => ({ ...prevState, notes }))
-          
-       })
- }
+  onTogglePin = (noteId) => {
+    noteService.togglePin(noteId)
+    .then(this.loadNotes);
+  }
+ 
 
   render() {
     const { notes, pinnedNotes } = this.state;
@@ -61,7 +59,7 @@ export class NoteApp extends React.Component {
         onRemoveNote={this.onRemoveNote}
         onDuplicateNote={this.onDuplicateNote}
         onChangeColor={this.onChangeColor}
-        onPinNote={this.onPinNote}
+        onTogglePin={this.onTogglePin}
          />
       </section>
     );

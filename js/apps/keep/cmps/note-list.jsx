@@ -1,6 +1,6 @@
 import { NotePreview } from "./note-preview.jsx";
 
-export function NoteList({ notes, pinnedNotes, onRemoveNote, onDuplicateNote, onChangeColor, onPinNote }) {
+export function NoteList({ notes, pinnedNotes, onRemoveNote, onDuplicateNote, onChangeColor, onPinNote, onTogglePin }) {
   // if (!notes.length) return <h1>no notes</h1>;
   return (
     <section>
@@ -8,7 +8,7 @@ export function NoteList({ notes, pinnedNotes, onRemoveNote, onDuplicateNote, on
     <section className="note-list">
       <div className="pinned-list">
       {pinnedNotes.map((note) => 
-        <NotePreview onRemoveNote={onRemoveNote} onDuplicateNote={onDuplicateNote} onChangeColor={onChangeColor} onPinNote={onPinNote} key={note.id} note={note} />
+        <NotePreview onTogglePin={onTogglePin} onRemoveNote={onRemoveNote} onDuplicateNote={onDuplicateNote} onChangeColor={onChangeColor} onPinNote={onPinNote} key={note.id} note={note} />
       )}
       </div> 
       
@@ -18,7 +18,7 @@ export function NoteList({ notes, pinnedNotes, onRemoveNote, onDuplicateNote, on
     <section className="note-list">
       <div className="notes-list">
       {notes.map((note) => 
-        <NotePreview onRemoveNote={onRemoveNote} onDuplicateNote={onDuplicateNote} onChangeColor={onChangeColor} onPinNote={onPinNote} key={note.id} note={note} />
+        <NotePreview onTogglePin={onTogglePin} onRemoveNote={onRemoveNote} onDuplicateNote={onDuplicateNote} onChangeColor={onChangeColor} onPinNote={onPinNote} key={note.id} note={note} />
       )}
 
       </div>

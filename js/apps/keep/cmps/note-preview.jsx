@@ -35,11 +35,6 @@ export class NotePreview extends React.Component {
   //   .then(this.setState({note}))
   // }
 
-  onTogglePin = (noteId) => {
-    noteService.togglePin(noteId).then((note) => {
-      this.props.loadNotes(note);
-    })
-  }
 
 
 
@@ -59,7 +54,7 @@ export class NotePreview extends React.Component {
         onRemoveNote={this.props.onRemoveNote}
         onDuplicateNote={this.props.onDuplicateNote}
         onChangeColor={this.props.onChangeColor}
-        onTogglePin={this.onTogglePin}
+        onTogglePin={this.props.onTogglePin}
         
         />
       </article>
