@@ -38,7 +38,7 @@ function editNote({note, onRemoveNote, onDuplicateNote, onChangeColor, onToggleP
             {/* <button className="edit-btn"><i className="far fa-edit"></i></button> */}
             <button className="edit-btn" onClick={() => onDuplicateNote(note)}><i className="fas fa-clone"></i></button>
             <button className="edit-btn" onClick={() => onRemoveNote(note)}><i className="fas fa-trash-alt"></i></button>
-            <button className="edit-btn"><i className="fas fa-envelope-open-text"></i></button>
+            {/* <button className="edit-btn"><i className="fas fa-envelope-open-text"></i></button> */}
             </div>
         </div>
         )
