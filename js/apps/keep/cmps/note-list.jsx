@@ -4,7 +4,7 @@ export function NoteList({ notes, pinnedNotes, onRemoveNote, onDuplicateNote, on
   // if (!notes.length) return <h1>no notes</h1>;
   return (
     <section>
-      <h1>My pinned notes</h1>
+      <h1>Pinned notes</h1>
     <section className="note-list">
       <div className="pinned-list">
       {pinnedNotes.map((note) => 
