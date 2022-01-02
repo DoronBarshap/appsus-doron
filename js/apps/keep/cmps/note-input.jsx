@@ -1,4 +1,4 @@
-export function DynamicNoteInput({ title, noteType, handleInputSubmit, onCreate }) {
+export function DynamicNoteInput({ title, noteType, handleInputSubmit }) {
   let placeholder;
   switch (noteType) {
     case "note-txt":
