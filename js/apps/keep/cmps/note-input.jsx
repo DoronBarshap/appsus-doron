@@ -1,4 +1,4 @@
-export function DynamicNoteInput({ title, noteType, handleInputSubmit }) {
+export function DynamicNoteInput({ title, noteType, handleInputSubmit, onCreate }) {
   let placeholder;
   switch (noteType) {
     case "note-txt":
@@ -19,10 +19,16 @@ export function DynamicNoteInput({ title, noteType, handleInputSubmit }) {
   }
 
   return (
-    <input
-      name={noteType.noteType}
-      placeholder={placeholder}
-      onKeyDown={handleInputSubmit}
-    />
+    <div>
+
+
+      {/* <input name={title.title} placeholder="title" /><br></br> */}
+      <input
+        name={noteType.noteType}
+        placeholder={placeholder}
+        onKeyDown={handleInputSubmit}
+      />
+      {/* // <button onClick={() => onCreate(title.title, noteType.noteType)}>create</button> */}
+    </div>
   );
 }

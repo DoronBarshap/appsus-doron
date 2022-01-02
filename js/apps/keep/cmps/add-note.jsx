@@ -7,6 +7,7 @@ const { withRouter } = ReactRouterDOM;
 class _AddNote extends React.Component {
   state = {
     noteType: 'note-txt',
+    title: '',
     note: {
       isPinned: false,
       info: {
@@ -31,13 +32,18 @@ class _AddNote extends React.Component {
     // if user hit enter
     if (ev.keyCode === 13) {
       this.setState({ noteType: "note-txt" });
-      noteService.createNote(ev.target.value, this.state.noteType);
+      noteService.createNote(ev.target.value, this.state.noteType, this.state.title);
       this.props.loadNotes();
       this.clearInput(ev.target);
     }
   };
 
-  
+  // onCreate = (ev, title, noteType) => {
+  //   this.setState({noteType:"note-txt", title:"title"});
+  //   noteService.createNote(ev.target.value, this.state.noteType, this.state.title);
+  //   this.props.loadNotes();
+  //   this.clearInput(ev.target)
+  // }
 
   clearInput(target) {
     target.value = "";
@@ -47,6 +53,9 @@ class _AddNote extends React.Component {
     const { noteType, title } = this.state;
     return (
       <div className="note-create flex align-center">
+        {/* <div className="title-input">
+          <input name={title} placeholder="title"  />
+        </div> */}
         <div className="note-input-container">
           
    
@@ -56,6 +65,7 @@ class _AddNote extends React.Component {
               noteType={noteType}
               title={title}
               handleInputSubmit={this.handleInputSubmit}
+              // onCreate={this.onCreate}
             />
           }
         </div>
