@@ -8,7 +8,7 @@
     flex-grow: 1;
 }
 .mail-app .side-nav{
-
+    
     display: flex;
     flex-direction: column;
     width: fit-content;
@@ -19,4 +19,10 @@
 }
 .mail-app button:hover{
     opacity: 80%;
+}
+
+body{
+    background-color: rgb(241, 241, 241);
+    /* background-image:none; */
+
 }

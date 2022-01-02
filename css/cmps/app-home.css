@@ -1,0 +1,8 @@
+body{
+    background-image: url(../../img/bcg.jpg);
+    background-size:cover;
+}
+
+.header-container{
+    background-color: transparent;
+}
