@@ -6,3 +6,10 @@ body{
 .header-container{
     background-color: transparent;
 }
+
+.home-page{
+    text-align: center;
+    font-size: 29px;
+    font-weight: bold;
+    font-family: monospace;
+}

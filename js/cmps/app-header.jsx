@@ -10,9 +10,10 @@ class _AppHeader extends React.Component {
                 <h1 onClick={() => this.props.history.push('/')}>AppSus</h1>
             </div>
             <nav className="app-nav flex justify-center">
+                <NavLink className="nav-btn" to="/">Home</NavLink>
                 <NavLink className="nav-btn" to="/mail">Email</NavLink>
                 <NavLink className="nav-btn" to="/keep">Notes</NavLink>
-                <NavLink className="nav-btn" to="/book">Books</NavLink>
+                {/* <NavLink className="nav-btn" to="/book">Books</NavLink> */}
             </nav>
         </div>
     
